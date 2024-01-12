@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
+import 'package:kafiil_task/screens/prelogin/complete_register_screen.dart';
 import 'package:kafiil_task/screens/prelogin/login_screen.dart';
+import 'package:kafiil_task/screens/prelogin/register_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,16 +30,41 @@ class MyApp extends StatelessWidget {
           supportedLocales: const [
             Locale('en'), // arabic
           ],
-          locale:  const Locale('en'),
+          locale: const Locale('en'),
           theme: ThemeData(
+            colorScheme: const ColorScheme(
+                brightness: Brightness.light,
+                primary: kPrimaryColor,
+                onPrimary: kWhiteColor,
+                secondary: kSecondaryColor,
+                onSecondary: kSecondaryColor,
+                error: kErrorBodyColor,
+                onError: kErrorColor,
+                background: kWhiteColor,
+                onBackground: kWhiteColor,
+                surface: kWhiteColor,
+                onSurface: kHintColor,
+            ),
+            datePickerTheme: const DatePickerThemeData(
+              surfaceTintColor: kPrimaryColor,
+              elevation: 0,
+              headerForegroundColor: kBlackColor,
+            ),
+            textSelectionTheme: const TextSelectionThemeData(
+              cursorColor: kBlackColor,
+              selectionColor: kWhiteColor,
+              selectionHandleColor: kBlackColor,
+            ),
+            scaffoldBackgroundColor: kWhiteColor,
             useMaterial3: true,
             primaryColor: kPrimaryColor,
             hintColor: kSecondaryColor,
+            unselectedWidgetColor: kHintColor,
             fontFamily: "Montserrat",
             textTheme: TextTheme(
               titleLarge: TextStyle(
                 color: kBlackColor,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
                 fontSize: 18.spMin,
               ),
               titleMedium: TextStyle(
@@ -64,7 +91,10 @@ class MyApp extends StatelessWidget {
           ),
           initialRoute: LoginScreen.id,
           routes: {
-            LoginScreen.id:(context)=> const LoginScreen(),
+            LoginScreen.id: (context) => const LoginScreen(),
+            RegisterScreen.id: (context) => const RegisterScreen(),
+            CompleteRegisterScreen.id: (context) =>
+                const CompleteRegisterScreen(),
           },
         );
       },
