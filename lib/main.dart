@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
+import 'package:kafiil_task/screens/postlogin/countries_screen.dart';
+import 'package:kafiil_task/screens/postlogin/services_screen.dart';
+import 'package:kafiil_task/screens/postlogin/who_am_i_screen.dart';
 import 'package:kafiil_task/screens/prelogin/complete_register_screen.dart';
 import 'package:kafiil_task/screens/prelogin/login_screen.dart';
 import 'package:kafiil_task/screens/prelogin/register_screen.dart';
@@ -93,8 +96,10 @@ class MyApp extends StatelessWidget {
           routes: {
             LoginScreen.id: (context) => const LoginScreen(),
             RegisterScreen.id: (context) => const RegisterScreen(),
-            CompleteRegisterScreen.id: (context) =>
-                const CompleteRegisterScreen(),
+            CompleteRegisterScreen.id: (context) => const CompleteRegisterScreen(),
+            WhoAmIScreen.id: (context) => const WhoAmIScreen(),
+            CountriesScreen.id: (context) => const CountriesScreen(),
+            ServicesScreen.id: (context) => const ServicesScreen(),
           },
         );
       },

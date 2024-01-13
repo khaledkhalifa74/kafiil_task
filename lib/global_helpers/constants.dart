@@ -13,6 +13,10 @@ const kErrorBodyColor = Color(0xFFFFF0ED);
 const kBodyColor = Color(0xFFE9F9F1);
 const kBorderColor = Color(0xFFE6EAEF);
 const kIconBGColor = Color(0xFF2867B2);
+const kShadowColor = Color(0x19202020);
+const kDividerColor = Color(0xFFF2F2F2);
+const kRateColor = Color(0xFFFFCB30);
+const kSalesCountColor = Color(0xFF828282);
 
 //icon colors
 const kPrimaryIconColor = Color(0xFF8692A6);
@@ -25,5 +29,7 @@ const String kDefaultAvatar = "assets/images/avatar.png";
 const String kFacebookIcon = "assets/images/facebookIcon.svg";
 const String kTwitterIcon = "assets/images/twitterIcon.svg";
 const String kLinkedinIcon = "assets/images/linkedin.svg";
+const String kStarIcon = "assets/images/star.svg";
+const String kCartIcon = "assets/images/cart.svg";
 
 

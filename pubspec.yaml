@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.1
   multi_select_flutter: ^4.1.3
   flutter_tags_x: ^1.1.0
+  number_paginator: ^0.4.0
 
 
 dev_dependencies:

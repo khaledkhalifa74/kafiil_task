@@ -8,11 +8,14 @@ import 'package:kafiil_task/global_helpers/globals.dart';
 import 'package:kafiil_task/screens/global_components/custom_button.dart';
 import 'package:kafiil_task/screens/global_components/custom_floating_action_button.dart';
 import 'package:kafiil_task/screens/global_components/custom_icon.dart';
+import 'package:kafiil_task/screens/global_components/fav_social_media.dart';
 import 'package:kafiil_task/screens/global_components/radio_button_with_text.dart';
 import 'package:kafiil_task/screens/global_components/second_registration_progress_line.dart';
 import 'package:kafiil_task/screens/global_components/select_salary_field.dart';
+import 'package:kafiil_task/screens/global_components/skills_body.dart';
 import 'package:kafiil_task/screens/global_components/social_media_item_with_checkbox.dart';
 import 'package:kafiil_task/screens/global_components/text_form_field_with_title.dart';
+import 'package:kafiil_task/screens/postlogin/who_am_i_screen.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 import '../global_components/custom_appbar.dart';
@@ -153,7 +156,7 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
                   ).then((selectedDate) {
                     if (selectedDate != null) {
                       dateController.text =
-                          DateFormat.yMd().format(selectedDate);
+                          DateFormat("yyyy-MM-dd", 'en').format(selectedDate);
                     }
                   });
                 },
@@ -168,133 +171,71 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                AppStrings.genderTitle,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  RadioButtonWithText(
-                    value: male.toString(),
-                    groupValue: gender,
-                    onChanged: (newValue) {
-                      setState(() {
-                        gender = newValue;
-                      });
-                    },
-                    text: 'Male',
+                  Text(
+                    AppStrings.genderTitle,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   const SizedBox(
-                    width: 24,
+                    height: 16,
                   ),
-                  RadioButtonWithText(
-                    value: female.toString(),
-                    groupValue: gender,
-                    onChanged: (newValue) {
-                      setState(() {
-                        gender = newValue;
-                      });
-                    },
-                    text: 'Female',
+                  Row(
+                    children: [
+                      RadioButtonWithText(
+                        value: male == true ? '0' : '1',
+                        groupValue: gender,
+                        onChanged: (newValue) {
+                          setState(() {
+                            gender = newValue;
+                          });
+                        },
+                        text: 'Male',
+                      ),
+                      const SizedBox(
+                        width: 24,
+                      ),
+                      RadioButtonWithText(
+                        value: female == true ? '1' : '0',
+                        groupValue: gender,
+                        onChanged: (newValue) {
+                          setState(() {
+                            gender = newValue;
+                          });
+                        },
+                        text: 'Female',
+                      ),
+                    ],
                   ),
                 ],
               ),
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                AppStrings.skillsTitle,
-                style: Theme.of(context).textTheme.titleMedium,
+              SkillsBody(
+                selectedValue: selectedValue,
+                skills: skills,
               ),
               const SizedBox(
                 height: 16,
               ),
-              GestureDetector(
-                onTap: () {
-                  _showMultiSelect(context);
-                },
-                child: Container(
-                  constraints: const BoxConstraints(minHeight: 100),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: kFieldColor,
-                  ),
-                  child: MultiSelectChipDisplay(
-                    items: selectedValue
-                        .map((e) => MultiSelectItem(e, e))
-                        .toList(),
-                    onTap: (value) {
-                      setState(() {
-                        selectedValue.remove(value);
-                      });
-                    },
-                    chipColor: kBodyColor,
-                    textStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-                          color: kPrimaryColor,
-                        ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Text(
-                AppStrings.favouriteSocialMediaTitle,
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              SocialMediaItemWithCheckBox(
-                title: 'Facebook',
-                icon: SvgPicture.asset(kFacebookIcon),
-                radioValue: facebookCheckBoxValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    facebookCheckBoxValue = newValue!;
-                  });
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SocialMediaItemWithCheckBox(
-                title: 'Twitter',
-                icon: SvgPicture.asset(kTwitterIcon),
-                radioValue: xCheckBoxValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    xCheckBoxValue = newValue!;
-                  });
-                },
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              SocialMediaItemWithCheckBox(
-                title: 'Linkedin',
-                icon: const CustomIcon(
-                  icon: kLinkedinIcon,
-                ),
-                radioValue: linkedinCheckBoxValue,
-                onChanged: (newValue) {
-                  setState(() {
-                    linkedinCheckBoxValue = newValue!;
-                  });
-                },
+              FavSocialMedia(
+                facebookTitle: 'Facebook',
+                twitterTitle: 'Twitter',
+                linkedinTitle: 'Linkedin',
+                linkedinRadioValue: linkedinCheckBoxValue,
+                twitterRadioValue: xCheckBoxValue,
+                facebookRadioValue: facebookCheckBoxValue,
               ),
               const SizedBox(
                 height: 32,
               ),
               CustomButton(
                 text: AppStrings.submitButtonTitle,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, WhoAmIScreen.id);
+                },
               ),
               const SizedBox(
                 height: 32,
@@ -311,27 +252,5 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
     setState(() {
       selectedImage = File(pickedImage!.path);
     });
-  }
-
-  void _showMultiSelect(BuildContext context) async {
-    await showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (context) {
-        return MultiSelectDialog(
-          items: skills.map((e) => MultiSelectItem(e, e)).toList(),
-          initialValue: selectedValue,
-          onConfirm: (values) {
-            setState(() {
-              selectedValue = values;
-            });
-          },
-          selectedColor: kPrimaryColor,
-          backgroundColor: kWhiteColor,
-          width: MediaQuery.of(context).size.width,
-          searchable: true,
-        );
-      },
-    );
   }
 }
