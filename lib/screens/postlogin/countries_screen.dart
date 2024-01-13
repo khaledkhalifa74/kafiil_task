@@ -20,7 +20,7 @@ class _CountriesScreenState extends State<CountriesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var pages = List.generate(numberOfPages, (index) => Container());
+    //var pages = List.generate(numberOfPages, (index) => Container());
     // Center(
     //    child: Text("Page number: ${index+1}",style: Theme.of(context).textTheme.titleLarge,),)
     return Scaffold(

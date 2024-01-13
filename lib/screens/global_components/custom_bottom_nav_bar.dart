@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kafiil_task/global_helpers/globals.dart';
 import 'package:kafiil_task/screens/postlogin/countries_screen.dart';
 import 'package:kafiil_task/screens/postlogin/services_screen.dart';

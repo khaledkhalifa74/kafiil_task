@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:kafiil_task/global_helpers/constants.dart';
 import 'package:kafiil_task/global_helpers/globals.dart';
 import 'package:kafiil_task/screens/global_components/custom_bottom_nav_bar.dart';
 import 'package:kafiil_task/screens/global_components/service_card.dart';

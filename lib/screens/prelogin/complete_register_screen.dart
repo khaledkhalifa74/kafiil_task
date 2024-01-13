@@ -1,23 +1,18 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
 import 'package:kafiil_task/global_helpers/globals.dart';
 import 'package:kafiil_task/screens/global_components/custom_button.dart';
 import 'package:kafiil_task/screens/global_components/custom_floating_action_button.dart';
-import 'package:kafiil_task/screens/global_components/custom_icon.dart';
 import 'package:kafiil_task/screens/global_components/fav_social_media.dart';
 import 'package:kafiil_task/screens/global_components/radio_button_with_text.dart';
 import 'package:kafiil_task/screens/global_components/second_registration_progress_line.dart';
 import 'package:kafiil_task/screens/global_components/select_salary_field.dart';
 import 'package:kafiil_task/screens/global_components/skills_body.dart';
-import 'package:kafiil_task/screens/global_components/social_media_item_with_checkbox.dart';
 import 'package:kafiil_task/screens/global_components/text_form_field_with_title.dart';
 import 'package:kafiil_task/screens/postlogin/who_am_i_screen.dart';
-import 'package:multi_select_flutter/multi_select_flutter.dart';
-
 import '../global_components/custom_appbar.dart';
 
 class CompleteRegisterScreen extends StatefulWidget {
