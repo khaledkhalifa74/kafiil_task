@@ -184,20 +184,11 @@ class _WhoAmIScreenState extends State<WhoAmIScreen> {
                   controller: passwordController,
                   maxLines: 1,
                   title: AppStrings.passwordTitle,
-                  obscureText: !passwordVisible,
-                  suffixIcon: IconButton(
-                      icon: Icon(
-                        passwordVisible
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
-                        color: kPrimaryIconColor,
-                        size: 18,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          passwordVisible = !passwordVisible;
-                        });
-                      }),
+                  // obscureText: AuthCubit.get(context).isPasswordShown,
+                  // suffixPressed: () {
+                  //   AuthCubit.get(context).changePasswordVisibility();
+                  // },
+                  // suffixIcon: AuthCubit.get(context).passwordVisible,
                 ),
                 const SizedBox(
                   height: 16,
@@ -263,8 +254,7 @@ class _WhoAmIScreenState extends State<WhoAmIScreen> {
                 TextFormFieldWithTitle(
                   controller: aboutController,
                   title: AppStrings.aboutTitle,
-                  height: 115,
-                  maxLines: 10,
+                  maxLines: 4,
                 ),
                 const SizedBox(
                   height: 16,
@@ -292,11 +282,8 @@ class _WhoAmIScreenState extends State<WhoAmIScreen> {
                   },
                   readOnly: true,
                   title: AppStrings.birthDateTitle,
-                  suffixIcon: const Icon(
-                    Icons.calendar_month_rounded,
-                    color: kPrimaryIconColor,
-                    size: 24,
-                  ),
+                  suffixIcon: Icons.calendar_month_rounded,
+                  iconColor: kPrimaryIconColor,
                 ),
                 const SizedBox(
                   height: 16,

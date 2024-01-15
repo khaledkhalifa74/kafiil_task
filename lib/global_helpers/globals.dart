@@ -24,4 +24,5 @@ class AppStrings{
   static const String nextButtonTitle = "Next";
   static const String submitButtonTitle = "Submit";
   static const String dontHaveAccountTitle = "Don’t have an account ?";
+  static const String validateErrorMessageTitle = "Fill the required fields";
 }

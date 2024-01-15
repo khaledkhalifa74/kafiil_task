@@ -6,19 +6,19 @@ import 'package:kafiil_task/screens/global_components/custom_icon.dart';
 import 'package:kafiil_task/screens/global_components/social_media_item_with_checkbox.dart';
 
 class FavSocialMedia extends StatefulWidget {
-  FavSocialMedia(
-      {super.key,
-      required this.facebookTitle,
-      required this.twitterTitle,
-      required this.linkedinTitle,
-      required this.linkedinRadioValue,
-      required this.twitterRadioValue,
-      required this.facebookRadioValue,
-      });
+  const FavSocialMedia({
+    super.key,
+    required this.facebookTitle,
+    required this.twitterTitle,
+    required this.linkedinTitle,
+    required this.linkedinRadioValue,
+    required this.twitterRadioValue,
+    required this.facebookRadioValue,
+  });
 
-  bool facebookRadioValue;
-  bool twitterRadioValue;
-  bool linkedinRadioValue;
+  final bool facebookRadioValue;
+  final bool twitterRadioValue;
+  final bool linkedinRadioValue;
   final String facebookTitle;
   final String twitterTitle;
   final String linkedinTitle;
@@ -28,6 +28,18 @@ class FavSocialMedia extends StatefulWidget {
 }
 
 class _FavSocialMediaState extends State<FavSocialMedia> {
+  bool? facebookRadioValue;
+  bool? twitterRadioValue;
+  bool? linkedinRadioValue;
+
+  @override
+  void initState() {
+    facebookRadioValue = widget.facebookRadioValue;
+    twitterRadioValue = widget.twitterRadioValue;
+    linkedinRadioValue = widget.linkedinRadioValue;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,10 +55,10 @@ class _FavSocialMediaState extends State<FavSocialMedia> {
         SocialMediaItemWithCheckBox(
           title: widget.facebookTitle,
           icon: SvgPicture.asset(kFacebookIcon),
-          radioValue: widget.facebookRadioValue,
+          radioValue: facebookRadioValue!,
           onChanged: (newValue) {
             setState(() {
-              widget.facebookRadioValue = newValue!;
+              facebookRadioValue = newValue!;
             });
           },
         ),
@@ -56,10 +68,10 @@ class _FavSocialMediaState extends State<FavSocialMedia> {
         SocialMediaItemWithCheckBox(
           title: widget.twitterTitle,
           icon: SvgPicture.asset(kTwitterIcon),
-          radioValue: widget.twitterRadioValue,
+          radioValue: twitterRadioValue!,
           onChanged: (newValue) {
             setState(() {
-              widget.twitterRadioValue = newValue!;
+              twitterRadioValue = newValue!;
             });
           },
         ),
@@ -71,10 +83,10 @@ class _FavSocialMediaState extends State<FavSocialMedia> {
           icon: const CustomIcon(
             icon: kLinkedinIcon,
           ),
-          radioValue: widget.linkedinRadioValue,
+          radioValue: linkedinRadioValue!,
           onChanged: (newValue) {
             setState(() {
-              widget.linkedinRadioValue = newValue!;
+              linkedinRadioValue = newValue!;
             });
           },
         ),

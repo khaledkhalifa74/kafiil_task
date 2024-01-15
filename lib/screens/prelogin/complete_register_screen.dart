@@ -119,8 +119,7 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
               ),
               const TextFormFieldWithTitle(
                 title: AppStrings.aboutTitle,
-                height: 115,
-                maxLines: 10,
+                maxLines: 4,
               ),
               const SizedBox(
                 height: 16,
@@ -157,11 +156,8 @@ class _CompleteRegisterScreenState extends State<CompleteRegisterScreen> {
                 },
                 readOnly: true,
                 title: AppStrings.birthDateTitle,
-                suffixIcon: const Icon(
-                  Icons.calendar_month_rounded,
-                  color: kPrimaryIconColor,
-                  size: 24,
-                ),
+                suffixIcon: Icons.calendar_month_rounded,
+                iconColor: kPrimaryIconColor,
               ),
               const SizedBox(
                 height: 16,

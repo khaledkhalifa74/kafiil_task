@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kafiil_task/client/simple_bloc_observer.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
 import 'package:kafiil_task/screens/postlogin/countries_screen.dart';
 import 'package:kafiil_task/screens/postlogin/services_screen.dart';
@@ -10,6 +12,7 @@ import 'package:kafiil_task/screens/prelogin/login_screen.dart';
 import 'package:kafiil_task/screens/prelogin/register_screen.dart';
 
 void main() {
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 
@@ -41,8 +44,8 @@ class MyApp extends StatelessWidget {
                 onPrimary: kWhiteColor,
                 secondary: kSecondaryColor,
                 onSecondary: kSecondaryColor,
-                error: kErrorBodyColor,
-                onError: kErrorColor,
+                error: kErrorColor,
+                onError: kBlackColor,
                 background: kWhiteColor,
                 onBackground: kWhiteColor,
                 surface: kWhiteColor,

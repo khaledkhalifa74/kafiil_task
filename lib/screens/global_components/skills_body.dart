@@ -6,16 +6,23 @@ import 'package:multi_select_flutter/dialog/mult_select_dialog.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 
 class SkillsBody extends StatefulWidget {
-  SkillsBody({super.key,required this.selectedValue,required this.skills});
+  const SkillsBody({super.key,required this.selectedValue,required this.skills});
 
-  List selectedValue = [];
-  List skills = [];
-
+  final List selectedValue;
+  final List skills;
   @override
   State<SkillsBody> createState() => _SkillsBodyState();
 }
 
 class _SkillsBodyState extends State<SkillsBody> {
+  List selectedValue = [];
+  List skills = [];
+  @override
+  void initState() {
+    selectedValue = widget.selectedValue;
+    skills = widget.skills;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,12 +46,12 @@ class _SkillsBodyState extends State<SkillsBody> {
               color: kFieldColor,
             ),
             child: MultiSelectChipDisplay(
-              items: widget.selectedValue
+              items: selectedValue
                   .map((e) => MultiSelectItem(e, e))
                   .toList(),
               onTap: (value) {
                 setState(() {
-                  widget.selectedValue.remove(value);
+                  selectedValue.remove(value);
                 });
               },
               chipColor: kBodyColor,
@@ -67,10 +74,10 @@ class _SkillsBodyState extends State<SkillsBody> {
       builder: (context) {
         return MultiSelectDialog(
           items: widget.skills.map((e) => MultiSelectItem(e, e)).toList(),
-          initialValue: widget.selectedValue,
+          initialValue: selectedValue,
           onConfirm: (values) {
             setState(() {
-              widget.selectedValue = values;
+              selectedValue = values;
             });
           },
           selectedColor: kPrimaryColor,

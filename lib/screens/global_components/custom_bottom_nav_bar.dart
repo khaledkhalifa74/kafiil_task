@@ -5,17 +5,21 @@ import 'package:kafiil_task/screens/postlogin/services_screen.dart';
 import 'package:kafiil_task/screens/postlogin/who_am_i_screen.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
-  CustomBottomNavBar({super.key, required this.currentIndex});
+  const CustomBottomNavBar({super.key, required this.currentIndex});
 
-  // late int currentIndex;
-  late int currentIndex;
+  final int currentIndex;
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-  // late int currentIndex;
+  int? currentIndex;
+  @override
+  void initState() {
+    currentIndex = widget.currentIndex;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -23,7 +27,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         currentIndex: widget.currentIndex,
         onTap: (int newIndex) {
           setState(() {
-            widget.currentIndex = newIndex;
+            currentIndex = newIndex;
             newIndex == 0
                 ? Navigator.pushReplacementNamed(context, WhoAmIScreen.id)
                 : newIndex == 1
