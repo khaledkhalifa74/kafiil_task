@@ -1,4 +1,8 @@
-class AppStrings{
+import 'dart:ui';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
+class AppStrings {
   static const String loginTitle = "Account Login";
   static const String registerTitle = "Register";
   static const String whoAmITitle = "Who Am I";
@@ -25,4 +29,24 @@ class AppStrings{
   static const String submitButtonTitle = "Submit";
   static const String dontHaveAccountTitle = "Don’t have an account ?";
   static const String validateErrorMessageTitle = "Fill the required fields";
+  static const String loginSuccessMsg = "Login successfully";
+  static const String loginErrorMsg = "Invalid email address or password";
 }
+
+void showToast({
+  required String toastMessage,
+  required Color backgroundColor,
+  required Color textColor,
+}) {
+  Fluttertoast.showToast(
+    msg: toastMessage,
+    toastLength: Toast.LENGTH_LONG,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 3,
+    backgroundColor: backgroundColor,
+    textColor: textColor,
+    fontSize: 16.spMin,
+  );
+}
+
+String token = '';

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
 
 class RadioButtonWithText extends StatelessWidget {
-  const RadioButtonWithText({super.key, required this.value, required this.groupValue, required this.onChanged, required this.text});
+  const RadioButtonWithText({super.key, this.value, required this.groupValue, required this.onChanged, this.text});
 
-  final String value;
+  final String? value;
   final String? groupValue;
   final void Function(String?) onChanged;
-  final String text;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RadioButtonWithText extends StatelessWidget {
               vertical: VisualDensity.minimumDensity),
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           activeColor: kPrimaryColor,
-          value: value,
+          value: value??'null',
           groupValue: groupValue,
           onChanged: onChanged,
         ),
@@ -27,7 +27,7 @@ class RadioButtonWithText extends StatelessWidget {
           width: 8,
         ),
         Text(
-          text,
+          text??'null',
           style: Theme.of(context).textTheme.bodyMedium!.copyWith(
             color: kBlackColor,
           ),

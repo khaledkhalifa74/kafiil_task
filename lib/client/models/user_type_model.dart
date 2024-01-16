@@ -1,11 +1,11 @@
-class Type {
+class UserType {
   int? code;
   String? name;
   String? niceName;
 
-  Type({this.code, this.name, this.niceName});
+  UserType({this.code, this.name, this.niceName});
 
-  Type.fromJson(Map<String, dynamic> json) {
+  UserType.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     name = json['name'];
     niceName = json['nice_name'];

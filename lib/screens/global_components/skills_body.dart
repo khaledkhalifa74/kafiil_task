@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kafiil_task/client/cubits/dependencies_cubit/dependencies_cubit.dart';
+import 'package:kafiil_task/client/models/dependencies_model.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
 import 'package:kafiil_task/global_helpers/globals.dart';
 import 'package:multi_select_flutter/chip_display/multi_select_chip_display.dart';
@@ -6,21 +8,36 @@ import 'package:multi_select_flutter/dialog/mult_select_dialog.dart';
 import 'package:multi_select_flutter/util/multi_select_item.dart';
 
 class SkillsBody extends StatefulWidget {
-  const SkillsBody({super.key,required this.selectedValue,required this.skills});
-
+  const SkillsBody({super.key,required this.selectedValue});
   final List selectedValue;
-  final List skills;
   @override
   State<SkillsBody> createState() => _SkillsBodyState();
 }
-
 class _SkillsBodyState extends State<SkillsBody> {
   List selectedValue = [];
-  List skills = [];
+  @override
+  void didUpdateWidget(covariant SkillsBody oldWidget) {
+    setState(() {
+      selectedValue = widget.selectedValue;
+    });
+    print(selectedValue);
+
+    super.didUpdateWidget(oldWidget);
+  }
+  @override
+  void didChangeDependencies() {
+    setState(() {
+      selectedValue = widget.selectedValue;
+    });
+    print(selectedValue);
+
+    super.didChangeDependencies();
+  }
   @override
   void initState() {
     selectedValue = widget.selectedValue;
-    skills = widget.skills;
+    print(selectedValue);
+
     super.initState();
   }
   @override
@@ -46,9 +63,7 @@ class _SkillsBodyState extends State<SkillsBody> {
               color: kFieldColor,
             ),
             child: MultiSelectChipDisplay(
-              items: selectedValue
-                  .map((e) => MultiSelectItem(e, e))
-                  .toList(),
+              items: selectedValue.map((e) => MultiSelectItem(e, e.label.toString())).toList(),
               onTap: (value) {
                 setState(() {
                   selectedValue.remove(value);
@@ -68,17 +83,20 @@ class _SkillsBodyState extends State<SkillsBody> {
     );
   }
   void _showMultiSelect(BuildContext context) async {
+    DependenciesModel dependenciesModel =
+        DependenciesCubit.get(context).dependenciesModel;
     await showModalBottomSheet(
       isScrollControlled: true,
       context: context,
       builder: (context) {
         return MultiSelectDialog(
-          items: widget.skills.map((e) => MultiSelectItem(e, e)).toList(),
+          items: dependenciesModel.data!.tags!.map((e) => MultiSelectItem(e, e.label.toString())).toList(),
           initialValue: selectedValue,
           onConfirm: (values) {
             setState(() {
               selectedValue = values;
             });
+            //print(values);
           },
           selectedColor: kPrimaryColor,
           backgroundColor: kWhiteColor,

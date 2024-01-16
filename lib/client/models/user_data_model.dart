@@ -1,18 +1,18 @@
-import 'package:kafiil_task/client/models/tags_model.dart';
-import 'package:kafiil_task/client/models/type_model.dart';
+import 'package:kafiil_task/client/models/user_tags_model.dart';
+import 'package:kafiil_task/client/models/user_type_model.dart';
 
 class UserData {
   int? id;
   String? firstName;
   String? lastName;
   String? about;
-  List<Tags>? tags;
+  List<UserTags>? tags;
   List<String>? favoriteSocialMedia;
   int? salary;
   String? email;
   String? birthDate;
   int? gender;
-  Type? type;
+  UserType? type;
   String? avatar;
 
   UserData(
@@ -35,9 +35,9 @@ class UserData {
     lastName = json['last_name'];
     about = json['about'];
     if (json['tags'] != null) {
-      tags = <Tags>[];
+      tags = <UserTags>[];
       json['tags'].forEach((v) {
-        tags!.add(Tags.fromJson(v));
+        tags!.add(UserTags.fromJson(v));
       });
     }
     favoriteSocialMedia = json['favorite_social_media'].cast<String>();
@@ -45,7 +45,7 @@ class UserData {
     email = json['email'];
     birthDate = json['birth_date'];
     gender = json['gender'];
-    type = json['type'] != null ? Type.fromJson(json['type']) : null;
+    type = json['type'] != null ? UserType.fromJson(json['type']) : null;
     avatar = json['avatar'];
   }
 

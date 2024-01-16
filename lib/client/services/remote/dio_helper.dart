@@ -2,17 +2,13 @@ import 'package:dio/dio.dart';
 
 class DioHelper {
   static Dio dio = Dio();
-  final String baseUrl = 'https://test.kafiil.com';
 
   static init() {
     dio = Dio(
       BaseOptions(
-          baseUrl: 'https://test.kafiil.com/',
+          baseUrl: 'https://test.kafiil.com',
           receiveDataWhenStatusError: true,
-          headers: {
-            'Accept-Language': 'ar',
-            'Accept': 'application/json',
-          }),
+      ),
     );
   }
   static Future<Response> getData({
@@ -24,6 +20,8 @@ class DioHelper {
     dio.options.headers = {
       'Content-Type': contentType,
       'Authorization': token,
+      'Accept-Language': 'ar',
+      'Accept': 'application/json',
     };
     return await dio.get(
       url,
@@ -41,6 +39,8 @@ class DioHelper {
     dio.options.headers = {
       'Content-Type': contentType,
       'Authorization': token,
+      'Accept-Language': 'ar',
+      'Accept': 'application/json',
     };
     return dio.post(
       url,

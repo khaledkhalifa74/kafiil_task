@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:kafiil_task/client/services/local/cashe_helper.dart';
 import 'package:kafiil_task/global_helpers/constants.dart';
 import 'package:kafiil_task/global_helpers/globals.dart';
 
 class RememberUserOption extends StatefulWidget {
-  const RememberUserOption({super.key, required this.checkBoxValue});
-  final bool checkBoxValue;
+  const RememberUserOption({super.key});
   @override
   State<RememberUserOption> createState() => _RememberUserOptionState();
 }
 
 class _RememberUserOptionState extends State<RememberUserOption> {
-  bool? checkBoxValue;
+  bool checkBoxValue = false;
 
   @override
   void initState() {
-    checkBoxValue = widget.checkBoxValue;
     super.initState();
   }
   @override
@@ -34,6 +33,9 @@ class _RememberUserOptionState extends State<RememberUserOption> {
             onChanged: (newValue) {
               setState(() {
                 checkBoxValue = newValue!;
+                if(checkBoxValue == true){
+                  CasheHelper.saveData(key: 'login', value: true);
+                }
               });
             },
           ),

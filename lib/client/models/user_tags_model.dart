@@ -1,10 +1,10 @@
-class Tags {
+class UserTags {
   int? id;
   String? name;
 
-  Tags({this.id, this.name});
+  UserTags({this.id, this.name});
 
-  Tags.fromJson(Map<String, dynamic> json) {
+  UserTags.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
   }
